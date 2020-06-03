@@ -40,3 +40,7 @@ All data needed for the application comes through this layer by implementing the
 [Stetho](http://developer.android.com/tools/testing-support-library/index.html#setup) - as a debug bridge.
 
 [Glide](https://github.com/bumptech/glide) - as image loader.
+
+##### Notes
+There are unit tests written for Use case. For times sake, I have not added tests for all classes.
+Also, I'm using fake Directions SDK because it is not free.
