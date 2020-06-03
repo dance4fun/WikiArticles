@@ -1,0 +1,38 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+sourceCompatibility = Versions.androidSourceCompatibility
+targetCompatibility = Versions.androidTargetCompatibility
+
+compileKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+
+compileTestKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+
+dependencies {
+  implementation project(':logger')
+  implementation project(':domain')
+
+  implementation Libs.rxJava2
+  implementation Libs.dagger
+  implementation Libs.kotlin
+  implementation Libs.retrofit
+  implementation Libs.retrofitGsonConverter
+
+  testImplementation Libs.mockito
+  testImplementation Libs.junit
+  testImplementation Libs.hamcrest
+  testImplementation Libs.hamcrestLib
+  testImplementation Libs.kotlinTest
+  testImplementation Libs.kotlinTestJUnit
+  testImplementation(Libs.mockitoKotlin) {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+  }
+}

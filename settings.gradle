@@ -1,0 +1,2 @@
+rootProject.name='Wiki Articles'
+include ':app', ':domain', ':logger', ':data'

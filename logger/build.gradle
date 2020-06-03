@@ -1,0 +1,20 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+sourceCompatibility = Versions.androidSourceCompatibility
+targetCompatibility = Versions.androidTargetCompatibility
+
+compileKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+compileTestKotlin {
+  kotlinOptions {
+    jvmTarget = Versions.androidTargetCompatibility
+  }
+}
+
+dependencies {
+  implementation Libs.kotlin
+}

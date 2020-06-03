@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/Widget.Button.Floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_XX"
+        android:backgroundTint="@color/white"
+        android:elevation="4dp"
+        app:fabCustomSize="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/itemCardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_gps"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/itemCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_XX"
+        android:layout_marginEnd="@dimen/margin_XX"
+        android:layout_marginBottom="@dimen/margin_XX"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:minHeight="180dp"
+        android:transitionGroup="true"
+        android:visibility="gone"
+        app:cardCornerRadius="8dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"
+        >
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          >
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/infoPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/routeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            />
+
+        <ImageView
+            android:id="@+id/arrowLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/infoPager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/infoPager"
+            tools:ignore="ContentDescription"
+            />
+
+        <ImageView
+            android:id="@+id/arrowRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:src="@drawable/ic_arrow_left"
+            app:layout_constraintBottom_toBottomOf="@id/infoPager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/infoPager"
+            tools:ignore="ContentDescription"
+            />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/helperArrows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="arrowLeft,arrowRight"
+            tools:visibility="visible"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/routeButton"
+            style="@style/Widget.Button.Accent"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/margin_XX"
+            android:layout_marginTop="@dimen/margin_XX"
+            android:layout_marginBottom="@dimen/margin_XX"
+            android:paddingStart="@dimen/margin_X"
+            android:paddingEnd="@dimen/margin_X"
+            android:text="@string/articles_item_route_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/showArticleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/infoPager"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/showArticleButton"
+            style="@style/Widget.Button.Primary"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/margin_X"
+            android:layout_marginEnd="@dimen/margin_XX"
+            android:paddingStart="@dimen/margin_X"
+            android:paddingEnd="@dimen/margin_X"
+            android:text="@string/articles_item_open_url_button"
+            app:layout_constraintBottom_toBottomOf="@id/routeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/routeButton"
+            app:layout_constraintTop_toTopOf="@+id/routeButton"
+            />
+
+        <FrameLayout
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+          <ProgressBar
+              android:layout_width="32dp"
+              android:layout_height="32dp"
+              android:layout_gravity="center" />
+        </FrameLayout>
+
+      </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

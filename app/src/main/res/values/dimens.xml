@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <dimen name="margin_X">8dp</dimen>
+  <dimen name="margin_XX">16dp</dimen>
+
+  <dimen name="progress_bar_size">64dp</dimen>
+  <dimen name="corner_radius_button">100dp</dimen>
+
+</resources>

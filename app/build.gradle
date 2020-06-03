@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Versions.compileSdk
+
+  compileOptions {
+    sourceCompatibility Versions.androidSourceCompatibility
+    targetCompatibility Versions.androidTargetCompatibility
+  }
+
+  defaultConfig {
+    applicationId "com.tiredbones.wikiarticles"
+    minSdkVersion Versions.minSdk
+    targetSdkVersion Versions.targetSdk
+    versionCode appVersionCode
+    versionName appVersionName
+
+    buildConfigField "String", "BASE_URL", "\"https://en.wikipedia.org/\""
+    buildConfigField "String", "WIKI_FILE_URL", "\"https://commons.wikimedia.org/wiki/Special:FilePath/\""
+  }
+
+  buildTypes {
+    debug {
+      minifyEnabled false
+    }
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  dataBinding {
+    enabled = true
+  }
+}
+
+dependencies {
+  implementation project(':logger')
+  implementation project(':domain')
+  implementation project(':data')
+
+  kapt Libs.daggerCompiler
+  kapt Libs.permissionsDispatcherProcessor
+
+  implementation Libs.kotlin
+  implementation Libs.appCompat
+  implementation Libs.supportConstraint
+  implementation Libs.recyclerView
+  implementation Libs.material
+  implementation Libs.viewPager2
+  implementation Libs.archComponentsExtensions
+  implementation Libs.location
+  implementation Libs.maps
+  implementation Libs.mapUtils
+  implementation Libs.paging
+  implementation Libs.glide
+  implementation Libs.dagger
+  implementation Libs.rxJava2
+  implementation Libs.rxAndroid2
+  implementation Libs.retrofit
+  implementation Libs.retrofitGsonConverter
+  implementation Libs.retrofitRx2
+  implementation Libs.okHttpLogging
+  implementation Libs.okHttp
+  implementation Libs.permissionsDispatcher
+  implementation Libs.stetho
+
+  testImplementation Libs.mockito
+  testImplementation Libs.junit
+  testImplementation Libs.hamcrest
+  testImplementation Libs.hamcrestLib
+  testImplementation Libs.kotlinTest
+  testImplementation Libs.kotlinTestJUnit
+  testImplementation Libs.archComponentsTesting
+  testImplementation(Libs.mockitoKotlin) {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+  }
+}

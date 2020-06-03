@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Wiki Articles</string>
+
+  <string name="articles_item_route_button">Show the route</string>
+  <string name="articles_item_open_url_button">Show article</string>
+  <string name="permission_denied_error">Please, enable location permission for using the app</string>
+  <string name="locations_settings_error">Please, enable locations in settings</string>
+</resources>

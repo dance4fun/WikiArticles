@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <data>
+
+    <variable
+        name="item"
+        type="com.tiredbones.wikiarticles.entities.ArticleDetails"
+        />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      >
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/itemImage"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:image="@{item.image}"
+        android:layout_marginStart="@dimen/margin_XX"
+        android:layout_marginTop="@dimen/margin_XX"
+        tools:src="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/itemTitle"
+        style="@style/Widget.Text.Header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_XX"
+        android:layout_marginEnd="@dimen/margin_XX"
+        android:layout_marginTop="@dimen/margin_XX"
+        android:text="@{item.title}"
+        app:layout_constraintStart_toEndOf="@id/itemImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Finnish National Opera and Ballet"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/itemDescription"
+        style="@style/Widget.Text.Description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{item.description}"
+        app:layout_constraintStart_toStartOf="@id/itemTitle"
+        app:layout_constraintEnd_toEndOf="@id/itemTitle"
+        app:layout_constraintTop_toBottomOf="@id/itemTitle"
+        tools:text="Opera house and opera company in Helsinki, Finland"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
